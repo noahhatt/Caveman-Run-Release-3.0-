@@ -22,6 +22,7 @@ public class ScrMenu implements Screen {
     GdxGame game;
     Button btnPlay;
     Button btnContr;
+    Button btnScratch;
     SpriteBatch batch;
     OrthographicCamera oc;
 
@@ -39,7 +40,7 @@ public class ScrMenu implements Screen {
         batch = new SpriteBatch();
         btnPlay = new Button(265,0,150,90,"playword.psd");
         btnContr = new Button(400, 140, 100, 80, "Contr.jpg");
-
+        btnScratch = new Button(400, 340, 100, 80, "Scratch.png");
     }
 
     private void changeScreen() {
@@ -55,6 +56,9 @@ public class ScrMenu implements Screen {
             if (btnContr.isMousedOver()) {
                game.updateState(2);
             }
+            if (btnScratch.isMousedOver()) {
+               game.updateState(3);
+            }
         }
     }
 
@@ -67,7 +71,7 @@ public class ScrMenu implements Screen {
         batch.setProjectionMatrix(oc.combined);
         btnContr.draw(batch);
         btnPlay.draw(batch);
-       
+        btnScratch.draw(batch);
         batch.end();
 
     }

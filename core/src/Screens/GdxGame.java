@@ -1,5 +1,6 @@
 package Screens;
 
+import Scratch.ScrRockRdmScratch;
 import com.badlogic.gdx.Game;
 
 public class GdxGame extends Game {
@@ -7,6 +8,7 @@ public class GdxGame extends Game {
     ScrMenu scrMenu;
     ScrPlay scrPlay;
     ScrContr scrContr;
+    ScrRockRdmScratch scrRockRdmScratch;
     int nScreen;
 
    //Thanks Kieran
@@ -17,9 +19,13 @@ public class GdxGame extends Game {
             setScreen(scrMenu);
         } else if (nScreen == 1) {
             setScreen(scrPlay);
-        } else if (nScreen ==2) {
+        } else if (nScreen == 2) {
             setScreen(scrContr);
-        } 
+        } else if (nScreen == 3) {
+            setScreen(scrRockRdmScratch);
+        }
+        
+        
     }
     
     @Override
@@ -27,7 +33,8 @@ public class GdxGame extends Game {
         nScreen = 0;        
         scrMenu = new ScrMenu(this);
         scrPlay = new ScrPlay(this);
-        scrContr = new ScrContr(this);    
+        scrContr = new ScrContr(this); 
+        scrRockRdmScratch = new ScrRockRdmScratch(this);
         updateState(0);
         
         
