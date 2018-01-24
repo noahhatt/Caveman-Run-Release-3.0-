@@ -17,14 +17,15 @@ public class ScrPlay implements Screen {
     GdxGame game;
     Button btnMenu;
     SpriteBatch batch;
-    boolean Hit;
     
     OrthographicCamera oc;
     Hero Hero1;
     Rock Rock;
-    Random rand = new Random();
-    int nRstart = rand.nextInt(700) + 500;
+    Random rand = new Random();    
+    float fRockx;
     float fFallSpeed = 0;
+    int nRstart = rand.nextInt(500) + 700;
+    
 
     public ScrPlay(GdxGame game) {
         this.game = game;
@@ -42,15 +43,6 @@ public class ScrPlay implements Screen {
     }
 
     private void changeScreen() {
-
-        if (Gdx.input.isKeyPressed(Input.Keys.M)) {
-            game.updateState(0);
-
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.C)) {
-            game.updateState(2);
-
-        }
         if (Gdx.input.justTouched()) {
 
             if (btnMenu.isMousedOver()) {
@@ -84,15 +76,16 @@ public class ScrPlay implements Screen {
 //        if (Rock.getX() <= -200) {
 //            Rock.setX(nRstart);
     //    }
-        Hit = isHit(Hero1, Rock);
-        if(Hit == false){
+               
             Rock.setX(Rock.getX() - 6);
-        if (Rock.getX() <= -200) {
+            fRockx = Rock.getX();
+        if (fRockx <= -200) {
+            nRstart = rand.nextInt(500) + 700;
             Rock.setX(nRstart);
         }
 
         }
-    }
+    
 
     public void KeyPressed() {
         if (Hero1.getY() >= Gdx.graphics.getHeight() / 2 + 100) {
@@ -102,15 +95,7 @@ public class ScrPlay implements Screen {
             }
         }
     }
-    //Kieren's awesome code
-    public boolean isHit(Hero Hero1, Rock Rock) {
-       if(Hero1.getBoundingRectangle().overlaps(Rock.getBoundingRectangle())){
-           return true;
-       }
-           return false;
-       
-    }
-   
+    
 
     @Override
     public void resize(int i, int i1) {
